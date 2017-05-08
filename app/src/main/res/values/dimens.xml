@@ -2,4 +2,35 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Football Banner -->
+    <dimen name="height_FootballBanner">70dp</dimen>
+    <dimen name="margin_Football">8dp</dimen>
+
+    <!-- Main Score -->
+    <dimen name="height_MainScore">200dp</dimen>
+    <dimen name="textSize_MainScore">112sp</dimen>
+    <dimen name="margin_MainScoreText">32dp</dimen>
+
+    <!-- Team Icons -->
+    <dimen name="padding_TeamsIconBanner">8dp</dimen>
+    <dimen name="height_width_TeamIcons">50dp</dimen>
+    <dimen name="padding_TeamIcons">8dp</dimen>
+
+    <!-- Team Names -->
+    <dimen name="textSize_TeamNames">24sp</dimen>
+
+    <!-- Vertical Divider -->
+    <dimen name="margin_Divider">16dp</dimen>
+    <dimen name="width_Divider">1dp</dimen>
+
+    <!-- Outer LinearLayout containing Yellow & Red Cards -->
+    <dimen name="padding_CardsLinearLayout">16dp</dimen>
+
+    <!-- Card Icons -->
+    <dimen name="height_width_CardIcons">40dp</dimen>
+
+    <!-- Card Text -->
+    <dimen name="textSize_CardText">32sp</dimen>
+
 </resources>

@@ -1,13 +1,87 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <!-- Background color of buttons in the app -->
-        <item name="colorButtonNormal">#1B5E20</item>
+        <item name="colorButtonNormal">@color/buttonColor</item>
     </style>
 
+    <!-- Main Banner with Football -->
+    <style name="footballBanner">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <!-- Football in top banner -->
+    <style name="football">
+        <item name="android:layout_margin">@dimen/margin_Football</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <!-- Main scores (goals) -->
+    <style name="mainScoresLayout">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="mainScoresText">
+        <item name="android:textSize">@dimen/textSize_MainScore</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="mainScoresTextDash">
+        <item name="android:textSize">@dimen/textSize_MainScore</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginRight">@dimen/margin_MainScoreText</item>
+        <item name="android:layout_marginLeft">@dimen/margin_MainScoreText</item>
+    </style>
+
+    <!-- Team Icons-->
+    <style name="teamIconsBanner">
+        <item name="android:background">@color/lightBlue</item>
+        <item name="android:padding">@dimen/padding_TeamsIconBanner</item>
+    </style>
+
+    <style name="teamIcons">
+        <item name="android:padding">@dimen/padding_TeamIcons</item>
+    </style>
+
+    <!-- Team Names -->
+    <style name="teamNames">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/textSize_TeamNames</item>
+    </style>
+
+    <!-- Vertical Divider -->
+    <style name="verticalDivider">
+        <item name="android:layout_marginLeft">@dimen/margin_Divider</item>
+        <item name="android:layout_marginRight">@dimen/margin_Divider</item>
+    </style>
+
+    <!-- Outer LinearLayout containing Yellow & Red Cards -->
+    <style name="cardsLinearLayout">
+        <item name="android:padding">@dimen/padding_CardsLinearLayout</item>
+    </style>
+
+    <!-- Inner LinearLayout containing Yellow & Red Cards -->
+    <style name="cardsLinearLayoutInside">
+        <item name="android:paddingBottom">@dimen/padding_CardsLinearLayout</item>
+    </style>
+
+    <!-- Card Text -->
+    <style name="cardText">
+        <item name="android:textSize">@dimen/textSize_CardText</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Buttons -->
+    <style name="greenButtons">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
