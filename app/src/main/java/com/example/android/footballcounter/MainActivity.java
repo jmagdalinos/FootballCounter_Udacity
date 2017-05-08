@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    //Declaring variables for score keeping
+    // Declaring variables for score keeping
     int scoreTeamA = 0;
     int scoreTeamB = 0;
     int yellowCardsA = 0;
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     int redCardsA = 0;
     int redCardsB = 0;
 
-    //Declaring final variables to use when saving state
+    // Declaring final variables to use when saving state
     private static final String STATE_SCORE_A = "scoreTeamA";
     private static final String STATE_SCORE_B = "scoreTeamB";
     private static final String STATE_YELLOW_CARDS_A = "yellowCardsA";
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String STATE_RED_CARDS_A = "redCardsA";
     private static final String STATE_RED_CARDS_B = "redCardsB";
 
-    //Declaring all views and buttons
+    // Declaring all views and buttons
     TextView scoreTeamA_Text_View;
     TextView scoreTeamB_Text_View;
     TextView yellowCardsA_Text_View;
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        //Call method to initialize all views
+        // Call method to initialize all views
         initializeAllViews();
 
-        //Call method to initialize OnClickListeners
+        // Call method to initialize OnClickListeners
         initializeOnClickListeners();
 
-        //Call method to display scores and cards on each view
+        // Call method to display scores and cards on each view
         displayScoreForTeamA(scoreTeamA);
         displayScoreForTeamB(scoreTeamB);
         displayYellowCardsForTeamA(yellowCardsA);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        //Saves current state of all variables using the relevant final variables
+        // Saves current state of all variables using the relevant final variables
         savedInstanceState.putInt(STATE_SCORE_A, scoreTeamA);
         savedInstanceState.putInt(STATE_SCORE_B, scoreTeamB);
         savedInstanceState.putInt(STATE_YELLOW_CARDS_A, yellowCardsA);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         // Always call the superclass so it can restore the view hierarchy
         super.onRestoreInstanceState(savedInstanceState);
 
-        //Saves current state of all variables using the relevant final variables and displays
+        // Saves current state of all variables using the relevant final variables and displays
         // them in the relevant views
         scoreTeamA = savedInstanceState.getInt(STATE_SCORE_A);
         scoreTeamB = savedInstanceState.getInt(STATE_SCORE_B);
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Initializes all views and assigns them to variable
+    // Initializes all views and assigns them to variable
     public void initializeAllViews(){
-        //TextViews
+        // TextViews
         scoreTeamA_Text_View = (TextView) findViewById(R.id.score_team_A);
         scoreTeamB_Text_View = (TextView) findViewById(R.id.score_team_B);
         yellowCardsA_Text_View = (TextView) findViewById(R.id.yellow_cards_counter_a);
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         redCardsA_Text_View = (TextView) findViewById(R.id.red_cards_counter_a);
         redCardsB_Text_View = (TextView) findViewById(R.id.red_cards_counter_b);
 
-        //Buttons
+        // Buttons
         scoreTeamA_Button = (Button) findViewById(R.id.goal_a);
         scoreTeamB_Button = (Button) findViewById(R.id.goal_b);
         yellowCardsA_Button = (Button) findViewById(R.id.yellow_cards_a);
@@ -120,58 +120,43 @@ public class MainActivity extends AppCompatActivity {
 
     // Set a click listener on Activity-selection Views
     public void initializeOnClickListeners() {
-        scoreTeamA_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseScoreA();
-            }
-        });
-
-        scoreTeamB_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseScoreB();
-            }
-        });
-
-        yellowCardsA_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseYellowCardsA();
-            }
-        });
-
-        yellowCardsB_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseYellowCardsB();
-            }
-        });
-
-        redCardsA_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseRedCardsA();
-            }
-        });
-
-        redCardsB_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                increaseRedCardsB();
-            }
-        });
-
-        reset_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetScores();
-            }
-        });
+        scoreTeamA_Button.setOnClickListener(this);
+        scoreTeamB_Button.setOnClickListener(this);
+        yellowCardsA_Button.setOnClickListener(this);
+        yellowCardsB_Button.setOnClickListener(this);
+        redCardsA_Button.setOnClickListener(this);
+        redCardsB_Button.setOnClickListener(this);
+        reset_Button.setOnClickListener(this);
     }
 
+    // Implement onClick method
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.goal_a:
+                    increaseScoreA();
+                    break;
+                case R.id.goal_b:
+                    increaseScoreB();
+                    break;
+                case R.id.yellow_cards_a:
+                    increaseYellowCardsA();
+                    break;
+                case R.id.yellow_cards_b:
+                    increaseYellowCardsB();
+                    break;
+                case R.id.red_cards_a:
+                    increaseRedCardsA();
+                    break;
+                case R.id.red_cards_b:
+                    increaseRedCardsB();
+                    break;
+                case R.id.reset_button:
+                    resetScores();
+                    break;
+            }
+        }
 
-    //Display Scores
+    // Display Scores
     public void displayScoreForTeamA (int scoreA) {
         scoreTeamA_Text_View.setText(String.valueOf(scoreA));
     }
@@ -181,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Display Yellow Cards
+    // Display Yellow Cards
     public void displayYellowCardsForTeamA (int yellowA) {
         yellowCardsA_Text_View.setText(String.valueOf(yellowA));
     }
@@ -190,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Display Red Cards
+    // Display Red Cards
     public void displayRedCardsForTeamA (int redA) {
         redCardsA_Text_View.setText(String.valueOf(redA));
     }
@@ -200,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Increase Scores
+    // Increase Scores
     public void increaseScoreA() {
         scoreTeamA ++;
         displayScoreForTeamA(scoreTeamA);
@@ -224,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Increase Red Cards
+    // Increase Red Cards
     public void increaseRedCardsA() {
         redCardsA ++;
         displayRedCardsForTeamA(redCardsA);
@@ -236,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Reset all score variables as well as views
+    // Reset all score variables as well as views
     public void resetScores() {
         scoreTeamA = 0;
         scoreTeamB = 0;
