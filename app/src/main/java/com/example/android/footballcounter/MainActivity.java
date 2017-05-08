@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //Increase Yellow Cards
+    // Increase Yellow Cards
     public void increaseYellowCardsA() {
         yellowCardsA ++;
         displayYellowCardsForTeamA(yellowCardsA);
